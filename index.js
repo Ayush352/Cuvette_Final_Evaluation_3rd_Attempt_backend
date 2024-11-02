@@ -17,6 +17,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
+const PORT = process.env.PORT || 4000;
 
 app.get('/', (req, res) => {
     res.json({
@@ -802,7 +803,7 @@ app.get('/tasks/share/:shareId', async (req, res) => {
 
 
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
     mongoose.connect(process.env.MONGODB_URL)
     .then(() => console.log('Server is running :)'))
     .catch((error) => console.log(error))
