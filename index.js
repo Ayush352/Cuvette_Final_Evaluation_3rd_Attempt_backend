@@ -764,7 +764,7 @@ app.post('/tasks/:taskId/share', auth, async (req, res) => {
       shareLinks.set(shareId, taskId);
       setTimeout(() => shareLinks.delete(shareId), 24 * 60 * 60 * 1000);
 
-      const baseUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+      const baseUrl = 'https://cuvette-final-evaluation-3rd-attempt-frontend-heu1.vercel.app';
       const shareUrl = `${baseUrl}/share/${shareId}`;
 
       res.json({ 
