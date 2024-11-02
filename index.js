@@ -226,7 +226,7 @@ const findRelatedTasks = async (task) => {
       const token = jwt.sign(
         { userId: user._id },
         process.env.JWT_SECRET,
-        { expiresIn: '2h' }
+        { expiresIn: '24h' }
       );
   
       res.json({
