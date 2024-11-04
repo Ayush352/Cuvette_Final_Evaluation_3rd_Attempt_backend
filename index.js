@@ -19,6 +19,36 @@ app.use(bodyParser.json())
 
 const PORT = process.env.PORT || 4000;
 
+const url = `https://cuvette-final-evaluation-3rd-attempt.onrender.com/runRender`; 
+const interval = 30000; 
+
+const reloadWebsite = async (req,res) => {
+  await axios.get(url)
+    .then(response => {
+      console.log(`Reloaded at ${new Date().toISOString()}: Status Code ${response.status}`);
+    })
+    .catch(error => {
+      console.error(`Error reloading at ${new Date().toISOString()}:`, error.message);
+    });
+}
+
+
+setInterval(reloadWebsite, interval);
+
+app.get('/runRender', (req, res) => {
+    res.json({
+      status: 'Render is live :)',
+      now: new Date()
+    })
+  })
+  
+  app.get('/', (req, res) => {
+    res.json({
+      status: 'Server is up :)',
+      now: new Date()
+    })
+  })
+
 app.get('/', (req, res) => {
     res.json({
       status: 'Server is up :)',
